@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<rh:help xmlns:rh="http://www.r-project.org/help" xmlns:r="http://www.r-project.org" xmlns:s3="http://www.r-project.org/S3" xmlns:s4="http://www.r-project.org/S4" xmlns:xi="http://www.w3.org/2003/XInclude" created="2009-05-19 08:40:12">
+  <r:package>ROOXML</r:package>
+  <rh:topic>wordDoc</rh:topic>
+  <rh:title>Create object providing access to contents of a Word .docx file</rh:title>
+  <rh:description>
+    <para>This function is a constructor function for creating an R object
+    that references a .docx file. 
+    With this object, we can then access many different aspects of the
+    Word file's content such as the text, tables, images, the comments,
+    styles.  We can also update the contents of document and auxiliary
+    files. 
+</para>
+    <para>This function returns an object which refers to the .docx file.
+  As that file changes, subsequent operations on the R object retrieve
+  the updated contents. This can be good or bad depending on the context
+  and how the document is being updated.
+     </para>
+  </rh:description>
+  <rh:arguments>
+   <rh:arg id="f" func="wordDoc"><para>the full name of the .docx file. ~ is expanded via <r:func pkg="base">path.expand</r:func></para></rh:arg>
+   <rh:arg id="create" func="wordDoc"><para>a logical value. If the file <r:arg>f</r:arg> does not exist and
+        <r:arg>create</r:arg> is <r:true/> an "empty" template .docx file is created with the name <r:arg>f</r:arg>.</para></rh:arg>
+   <rh:arg id="class" func="wordDoc"><para>a character string giving the name of the S4 class to create.
+     The default is typically used. However, this parameter allows other constructor functions customize the 
+     class of the result. The class should derive from <r:class>WordArchive</r:class>,
+       or at least <r:class pkg="OOXMLArchive">ZipFileArchive</r:class></para></rh:arg>
+   </rh:arguments>
+  <rh:value>
+    <para>An object of class given by the <r:arg>class</r:arg> argument.
+       This is an object that typically derives from <r:class>WordArchive</r:class>.
+     </para>
+  </rh:value>
+  <rh:seealso><r:func pkg="ROOXML">creator</r:func>, <r:func pkg="ROOXML">properties</r:func>
+   </rh:seealso>
+  <xi:include href="/Users/duncan/authorInfo.xml"/>
+  <rh:references>
+   </rh:references>
+  <rh:examples>
+    <r:init/>
+    <rh:example id="">
+      <rh:title> </rh:title>
+      <rh:description>
+        <para>
+        </para>
+      </rh:description>
+      <r:code>
+f = system.file("SampleDocs", "RWordDocTools.docx", package = "RWordXML")
+doc = wordDoc(f)
+properties(doc)
+creator(doc)
+created(doc)
+getStyles(doc)
+        </r:code>
+    </rh:example>
+  </rh:examples>
+  <rh:keywords>
+    <rh:keyword/>
+  </rh:keywords>
+  <rh:versionIntroduced version=""/>
+</rh:help>

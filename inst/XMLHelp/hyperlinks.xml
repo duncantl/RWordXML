@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<rh:help xmlns:rh="http://www.r-project.org/help" xmlns:r="http://www.r-project.org" xmlns:s3="http://www.r-project.org/S3" xmlns:s4="http://www.r-project.org/S4" xmlns:xi="http://www.w3.org/2003/XInclude" created="2009-05-21 07:20:07">
+  <r:package>RWordXML</r:package>
+  <rh:topic>hyperlinks</rh:topic>
+  <rh:method xmlns:rh="http://www.r-project.org/help" name="hyperlinks">WordArchive</rh:method>
+  <rh:method xmlns:rh="http://www.r-project.org/help" name="hyperlinks">WordArchive</rh:method>
+  <rh:title>Get the hyperlinks in a Word document</rh:title>
+  <rh:description>
+    <para>This function extracts the hyperlinks in a Word document, returning the
+URLs and the text shown in the links.
+     </para>
+  </rh:description>
+  <rh:arguments>
+   <rh:arg id="doc" func="hyperlinks"><para>the XML document object as an archive</para></rh:arg>
+   <rh:arg id="comments" func="hyperlinks"><para>a logical value controlling whether to look in the comments in the Word document as well as the text for hyperlinks.</para></rh:arg>
+   <rh:arg id="..." func="hyperlinks"><para>additional parameters for use by the methods of this generic function.</para></rh:arg>
+   </rh:arguments>
+  <rh:value>
+    <para>
+     </para>
+  </rh:value>
+  <rh:conditions>
+   </rh:conditions>
+  <rh:details>
+    <para>
+     </para>
+  </rh:details>
+  <rh:seealso>
+   </rh:seealso>
+  <xi:include href="/Users/duncan/authorInfo.xml" xpointer="xpointer(//author)"/>
+  <rh:references>
+   </rh:references>
+  <author>
+    <firstname> </firstname>
+    <surname> </surname>
+    <email> </email>
+  </author>
+  <rh:examples>
+    <r:init/>
+    <rh:example id="">
+      <rh:title> </rh:title>
+      <rh:description>
+        <para>
+        </para>
+      </rh:description>
+      <r:code>
+        </r:code>
+    </rh:example>
+  </rh:examples>
+  <rh:keywords>
+    <rh:keyword/>
+  </rh:keywords>
+  <rh:versionIntroduced version=""/>
+</rh:help>

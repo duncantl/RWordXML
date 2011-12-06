@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="/Users/duncan/Classes/StatComputing/XDynDocs/inst/XSL/OmegahatXSL/Todo.xsl" ?>
+
+<topics xmlns:r='http://www.r-project.org'>
+
+<topic>
+<title>General</title>
+<items>
+
+<item>
+When we add a list, we can't get it back.
+So it must not be going in "correctly"/consistently.
+Works now with changes to the code in the package, 
+but the style setting is not ListParagraph, but some generic.
+<r:code>
+library(XML); library(RWordXML)
+unlink("/tmp/myLists.docx")
+doc = wordDoc("/tmp/myLists.docx", create = TRUE)
+doc = addList(c("Duncan", "Zoe"), doc) 
+lists(doc)
+system("open /tmp/myLists.docx")
+</r:code>
+
+
+<ignore>
+Here we customize the element creation.
+<r:code>
+library(XML); library(RWordXML)
+fun = 
+ function(x, parent = NULL, inline = TRUE)
+    newXMLNode("w:r", newXMLNode("w:t", x, namespaceDefinitions = RWordXML:::WordXMLNamespaces["w"]), parent = parent)
+unlink("/tmp/myLists.docx")
+doc = wordDoc("/tmp/myLists.docx", create = TRUE)
+doc = addList(c("Duncan", "Zoe"), doc) #, elFun = fun)
+lists(doc)
+system("open /tmp/myLists.docx")
+</r:code>
+</ignore>
+
+</item>
+
+<item status="done">
+Get the width for R printing set correctly.
+</item>
+
+<item>
+Use PDF or SVG for plots when we can to get scalar graphics.
+</item>
+<item>
+Get the aspect ratio right for graphics.
+</item>
+
+<item>
+Make certain all the styles are in our template.
+<br/>
+And in our toolbar.
+</item>
+
+<item status="done">
+Why is one of the plots not found when adding to the archive.
+<br/>
+Is it always the last one? or is it that it is lattice?
+<br/>
+It is that it is a lattice plot that is not being printed.
+</item>
+
+<item status="done">
+Why are the plots that do not have an output node not appearing
+<br/>
+Is this still true?
+</item>
+
+
+<item status="done">
+hyperlinks(, comments = TRUE).
+
+<r:code>
+doc = wordDoc("inst/SampleDocs/hyperlinks.docx")
+hyperlinks(doc)
+hyperlinks(doc, comments = TRUE)
+</r:code>
+
+</item>
+
+<item>
+Is createPhrase similar to paragraph?
+</item>
+
+<list>
+getListNodes for the nested case
+<br/>
+What nested case?
+</list>
+
+<item status="done">
+remove the empty output paragraphs/nodes
+</item>
+
+<item>
+If we remove the code nodes, allow adding the code as comments.
+</item>
+
+<item status="check">
+Function to add session info to the end of the document.
+<br/>
+Gabe added this.
+</item>
+
+<item status="done">
+Function to insert list into a document.
+<br/>
+See addList()
+</item>
+
+<item>
+Function to add entries to bibliography for packages.
+Look at functions and add packages that are used but not
+explicitly referenced.
+</item>
+
+<item status="done">
+When removing nodes, handle the Rexpr nodes,
+i.e. follow the siblings and remove those.
+<br/>
+Could be made more efficient by getting the nodes
+just once rather than with 2 calls to getCodeNodes()
+with startOnly = TRUE/FALSE.
+</item>
+
+<item status="done">
+Chase down the cor(x,y) Rexpr in noPlots1.docx.
+</item>
+
+<item status="done">
+Use  a custom property for R.digits.
+</item>
+
+<item status="done">
+Get custom properties.
+Perhaps in ROOXML as it is general.
+In docProps/custom.xml
+</item>
+
+<item status="done">
+This is the same as the "Chase down the cor(x,y)" above.
+See noPlots.docx and that the last Rexpr is not coming out
+with 
+<r:code>
+xdoc = ar[[getDocument(ar)]]
+nodes = RWordXML:::getCodeNodes(xdoc, asNodes = TRUE)
+</r:code>
+Fix how we identify the code nodes
+for isRexprNode
+</item>
+</items>
+</topic>
+</topics>

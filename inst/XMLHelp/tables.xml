@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+<rh:help xmlns:rh="http://www.r-project.org/help" xmlns:r="http://www.r-project.org" xmlns:s3="http://www.r-project.org/S3" xmlns:s4="http://www.r-project.org/S4" xmlns:xi="http://www.w3.org/2003/XInclude" created="2009-05-20 16:03:18" updated="2009-10-29 14:53:46">
+  <r:package>RWordXML</r:package>
+  <rh:topic>lists</rh:topic>
+  <rh:topic>tables</rh:topic>
+  <rh:topic>getTableNodes</rh:topic>
+  <rh:topic>getListNodes</rh:topic>
+  <rh:topic>getImages</rh:topic>
+  <rh:topic>readList</rh:topic>
+  <rh:topic>readTable</rh:topic>
+  <rh:method name="lists">WordArchive</rh:method>
+  <rh:method name="lists">XMLInternalDocument</rh:method>
+  <rh:method name="tables">WordArchive</rh:method>
+  <rh:method name="tables">XMLInternalDocument</rh:method>
+  <rh:method name="getListNodes">WordArchive</rh:method>
+  <rh:method name="getListNodes">XMLInternalDocument</rh:method>
+  <rh:method name="getTableNodes">WordArchive</rh:method>
+  <rh:method name="getTableNodes">XMLInternalDocument</rh:method>
+  <rh:method name="getImages">WordArchive</rh:method>
+  <rh:method name=""></rh:method>
+  <rh:title>Read lists and tables from a Word XML document</rh:title>
+  <rh:description>
+    <para>These functions allow us to retrieve the content of 
+  and the XML nodes associated with the tables and lists within
+  a Word document. 
+     </para>
+  </rh:description>
+  <rh:arguments>
+   <rh:arg id="x" func="tables"><para>the <r:class>WordArchive</r:class> document</para></rh:arg>
+<!--   <rh:arg id="doc"><xi:include xpointer="xmlns(rh=http://www.r-project.org/rhelp)xpointer(//rh:arg[@id='x']/*)"/></rh:arg> -->
+   <rh:arg id="doc"><xi:include  xpointer="xpointer(//*[@id='x']/node())"/></rh:arg>
+   <rh:arg id="node"><para>the XML node that starts the list</para></rh:arg>
+   <rh:arg id="as.data.frame"><para>a logical value that controls whether the result should be structured as a data frame</para></rh:arg>
+   <rh:arg id="colClasses"><para>a character vector giving the classes for each of the columns in the table when it is converted to a data frame</para></rh:arg>
+   <rh:arg id="header"><para>a logical value that controls whether the first row of the table is treated as the header, giving the names of the column.</para></rh:arg>
+   <rh:arg id="stringsAsFactors"><para> </para></rh:arg>
+   <rh:arg id="elFun"><para>the function for processing each node in the list</para></rh:arg>
+   <rh:arg id="nested"><para>a logical value that controls whether lists within lists are returned with that structure
+    or if the results are returned as a single "flat" list. </para></rh:arg>
+   <rh:arg id="level"><para>an integer value used internally for recursive calls. </para></rh:arg>
+   <rh:arg id="rows"><para>a list of the XML nodes within a table to process. This allows the caller to omit certain rows of nodes which should not be processed.</para></rh:arg>
+   <rh:arg id="convert"><para>a function that is used to process each table node in the document and convert its contents into an R object</para></rh:arg>
+   <rh:arg id="..." func="tables"><para>additional arguments</para></rh:arg>
+   </rh:arguments>
+  <rh:value>
+    <para><r:func>lists</r:func> returns either a vector of the list elements, or if <r:arg>nested</r:arg> is <r:true/>
+     and there are nested lists, a list in which each element is either a single value or  sub-list.
+</para>
+    <para><r:func>tables</r:func> returns a list of the tables in the Word document. Each table is converted to an R object
+  according to <r:arg>convert</r:arg> and so the type of the elements in the result are controlled by that function. 
+  By default, these are data frames.
+     </para>
+
+<para>
+<r:func>getTableNodes</r:func> and <r:func>getListNodes</r:func> return a list of <r:class>XMLInternalElementNode</r:class>
+objects.
+</para>
+
+  </rh:value>
+  <rh:seealso>
+   </rh:seealso>
+  <xi:include href="/Users/duncan/authorInfo.xml"/>
+  <rh:references>
+   </rh:references>
+  <rh:examples>
+    <r:init/>
+    <rh:example id="">
+      <rh:title> </rh:title>
+      <rh:description>
+        <para>Here we get the lists
+        </para>
+      </rh:description>
+      <r:code>
+d = wordDoc(system.file("SampleDocs", "sampleLists.docx", package = "RWordXML"))
+lists(d)
+        </r:code>
+    </rh:example>
+
+    <rh:example id="">
+      <rh:title> </rh:title>
+      <rh:description>
+        <para>Here we get the lists
+        </para>
+      </rh:description>
+      <r:code>
+d = wordDoc(system.file("SampleDocs", "sampleTables.docx", package = "RWordXML"))
+tables(d)
+        </r:code>
+    </rh:example>
+    <rh:example id="">
+      <rh:title> </rh:title>
+      <rh:description>
+        <para>Here we get the images
+        </para>
+      </rh:description>
+      <r:code>
+d = wordDoc(system.file("SampleDocs", "Images2.docx", package = "RWordXML"))
+getImages(d)
+        </r:code>
+    </rh:example>
+  </rh:examples>
+  <rh:keywords>
+    <rh:keyword>data</rh:keyword>
+  </rh:keywords>
+  <rh:versionIntroduced version=""/>
+</rh:help>

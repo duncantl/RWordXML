@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<rh:help xmlns:rh="http://www.r-project.org/help" xmlns:r="http://www.r-project.org" xmlns:s3="http://www.r-project.org/S3" xmlns:s4="http://www.r-project.org/S4" xmlns:xi="http://www.w3.org/2003/XInclude" created="2009-05-20 16:04:24">
+  <r:package>RWordXML</r:package>
+  <rh:topic> </rh:topic>
+  <rh:topic>isParagraphNode</rh:topic>
+  <rh:title>Determine if an XML node within a Word document represents a paragraph</rh:title>
+  <rh:description>
+    <para> This function determines if the given XML node is the top-level node that 
+      embodies a paragraph in the WordProcessingML structure.
+     </para>
+  </rh:description>
+  <rh:arguments>
+   <rh:arg id="node" func="isParagraphNode"><para>the <r:s3class>XMLInternalNode</r:s3class> </para></rh:arg>
+   </rh:arguments>
+  <rh:value>
+    <para>A logical value indicating whether  the node represents a paragraph or not.
+     </para>
+  </rh:value>
+  <rh:details>
+    <para>
+     </para>
+  </rh:details>
+  <rh:seealso>
+   </rh:seealso>
+  <xi:include href="/Users/duncan/authorInfo.xml"/>
+  <rh:references>
+   </rh:references>
+  <rh:examples>
+    <r:init/>
+    <rh:example id="">
+      <rh:title> </rh:title>
+      <rh:description>
+        <para>
+        </para>
+      </rh:description>
+      <r:code>
+        </r:code>
+    </rh:example>
+  </rh:examples>
+  <rh:keywords>
+    <rh:keyword>programming</rh:keyword>
+  </rh:keywords>
+  <rh:versionIntroduced version=""/>
+</rh:help>

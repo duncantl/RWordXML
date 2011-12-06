@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<rh:help xmlns:rh="http://www.r-project.org/help" xmlns:r="http://www.r-project.org" xmlns:s3="http://www.r-project.org/S3" xmlns:s4="http://www.r-project.org/S4" xmlns:xi="http://www.w3.org/2003/XInclude" created="2009-05-20 06:47:47" updated="2009-05-20 07:11:22">
+  <r:package>ROOXML</r:package>
+  <rh:topic>getStyleId</rh:topic>
+  <rh:topic>getStyles</rh:topic>
+  <rh:topic>addStyle</rh:topic>
+  <rh:title>Get information about or add a style to a Word document</rh:title>
+  <rh:description>
+    <para>These functions allow us to access the collection of style definitions in a Word document
+     and to add new style definitions.
+     </para>
+  </rh:description>
+  <rh:arguments>
+     <rh:arg id="doc" func="getStyles,addStyle"><para>the Word document object as a <r:class>WordArchive</r:class> object.</para></rh:arg>
+     <rh:arg id="useIds" func="getStyles"><para> </para></rh:arg>
+     <rh:arg id="node"><para> </para></rh:arg>
+     <rh:arg id="style" func="addStyle"><para>the style object to be added. </para></rh:arg>
+   </rh:arguments>
+  <rh:value>
+    <para>
+     </para>
+  </rh:value>
+  <rh:conditions>
+   </rh:conditions>
+  <rh:details>
+    <para>
+     </para>
+  </rh:details>
+  <rh:seealso>
+   </rh:seealso>
+  <xi:include href="/Users/duncan/authorInfo.xml"/>
+  <rh:references>
+   </rh:references>
+  <author>
+    <firstname> </firstname>
+    <surname> </surname>
+    <email> </email>
+  </author>
+  <rh:examples>
+    <r:init/>
+    <rh:example id="">
+      <rh:title> </rh:title>
+      <rh:description>
+        <para>
+        </para>
+      </rh:description>
+      <r:code>
+        </r:code>
+    </rh:example>
+  </rh:examples>
+  <rh:keywords>
+    <rh:keyword/>
+  </rh:keywords>
+  <rh:versionIntroduced version=""/>
+</rh:help>

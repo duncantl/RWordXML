@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<article xmlns:r="http://www.r-project.org"
+         xmlns:xi="http://www.w3.org/2003/XInclude">
+
+<articleinfo>
+
+<title></title>
+
+<author><firstname>Duncan</firstname><surname>Temple Lang</surname>
+  <affiliation><orgname>University of California at Davis</orgname>
+               <orgdiv>Department of Statistics</orgdiv>
+  </affiliation>
+</author>
+</articleinfo>
+
+<section>
+<title></title>
+
+<para>
+Word on Windows won't show PDF images.
+However, PDF is much better on the Mac.
+So we want to use PDF by default, but 
+have a Fallback image for Windows.
+
+</para>
+<para>
+Our default is to create two images for each 
+plot: PDF and PNG.
+The PDF is the default and the PNG is the fallback.
+</para>
+<para>
+We want to allow the caller of <r:func>wordDynDoc</r:func>
+to create just one image and for them to specify the
+device.
+They should be able to specify the device as a
+function name or a function object.
+In the case of the latter, they have to identify the
+type of image created, e.g. the extension or the MIME type.
+</para>
+<para>
+
+When we process a code node (<r:func>processWordNode</r:func>)
+we have to take account of any existing image there and its
+format.
+
+
+</para>
+<para>
+
+</para>
+
+</section>
+</article>

@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<rh:help xmlns:rh="http://www.r-project.org/help" xmlns:r="http://www.r-project.org" xmlns:s3="http://www.r-project.org/S3" xmlns:s4="http://www.r-project.org/S4" xmlns:xi="http://www.w3.org/2003/XInclude" created="2009-05-20 16:04:32">
+  <r:package>RWordXML</r:package>
+  <rh:topic>getFigureInfo</rh:topic>
+  <rh:title>Get information about a figure in a Word document</rh:title>
+  <rh:description>
+    <para>This function retrieves meta information about a figure in a Word document.
+This includes information such as 
+     </para>
+  </rh:description>
+  <rh:arguments>
+   <rh:arg id="node" func="getFigureInfo"><para> </para></rh:arg>
+   <rh:arg id="ar" func="getFigureInfo"><para> </para></rh:arg>
+   <rh:arg id="rid" func="getFigureInfo"><para> </para></rh:arg>
+   </rh:arguments>
+  <rh:value>
+    <para>
+     </para>
+  </rh:value>
+  <rh:seealso>
+   </rh:seealso>
+  <xi:include href="/Users/duncan/authorInfo.xml"/>
+  <rh:references>
+   </rh:references>
+  <author>
+    <firstname> </firstname>
+    <surname> </surname>
+    <email> </email>
+  </author>
+  <rh:examples>
+    <r:init/>
+    <rh:example id="">
+      <rh:title> </rh:title>
+      <rh:description>
+        <para>
+        </para>
+      </rh:description>
+      <r:code>
+        </r:code>
+    </rh:example>
+  </rh:examples>
+  <rh:keywords>
+    <rh:keyword/>
+  </rh:keywords>
+  <rh:versionIntroduced version=""/>
+</rh:help>

@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title></title><link rel="stylesheet" type="text/css" href="/Users/duncan/Classes/StatComputing/XDynDocs/inst/CSS/OmegaTech.css"></link><meta name="generator" content="DocBook XSL Stylesheets V1.76.1"></meta><script xmlns="" type="text/javascript" src="http://www.omegahat.org/DynDocs/JavaScript/toggleHidden.js"></script>
+</head><body class="yui-skin-sam">
+<script xmlns="" type="text/javascript"><!--
+var toggleCodeIds = [
+ 
+   "id1169615247105", 
+   "id1169615247109", 
+   "id1169615247115"
+];
+--></script><p xmlns=""></p>
+<div class="article"><div class="titlepage"><div><div><h2 class="title"><a id="id1169615194924"></a></h2></div><div><div class="author"><h3 class="author"><span class="firstname">Duncan</span> <span class="surname">Temple Lang</span></h3><div class="affiliation"><span class="orgname">University of California at Davis<br></br></span> <span class="orgdiv">Department of Statistics<br></br></span></div></div></div></div><hr></hr></div><div class="section" title="Using RWordXML for Authoring Dynamic Documents with R Code"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="id1169614777768"></a>Using RWordXML for Authoring Dynamic Documents with R Code</h2></div></div></div><p>
+We have defined several styles that you use to markup 
+R and shell code as you are authoring a document in Word.
+To access these styles, you can either open our template
+(RStyles.dotm) that is installed with the package,
+or you can chose to use that template as the default for
+all Word documents (or merge its styles into the default template).
+Either works fine.
+</p><p>
+The simple idea is that you write your document,
+cut-and-paste or write R code and mark it up
+with the appropriate styles that identify the role of the code,
+e.g. an R plot, regular R code, shell code.
+</p><p>
+When you want to run the code and insert
+the results, you use the
+<a xmlns="" href="http://www.omegahat.org/RWordXML">RWordXML</a> package
+and specifically the 
+<i xmlns="" class="rfunc">wordDynDoc()
+</i> to 
+process the document, run the code and insert the relevant
+output into a <span class="emphasis"><em>new</em></span> Word document
+(i.e. we don't overwrite the original one!).
+</p></div><div class="section" title="Installing the Templates with Styles"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="id1169615246754"></a>Installing the Templates with Styles</h2></div></div></div><p>
+We'll illustrate this for a Mac.
+</p><p>
+There are two ways we can use the R styles as defined in 
+<code xmlns:r="http://www.r-project.org" xmlns:s="http://cm.bell-labs.com/stat/S4" xmlns:c="http://www.C.org" xmlns:python="http://www.python.org" xmlns:perl="http://www.perl.org" xmlns:vb="http://www.visualbasic.com" xmlns:omegahat="http://www.omegahat.org" xmlns:bioc="http://www.bioconductor.org" xmlns:java="http://www.java.com" xmlns:statdocs="http://www.statdocs.org" xmlns:gtk="http://www.gtk.org" xmlns:com="http://www.microsoft.com" xmlns:sh="http://www.shell.org" xmlns="" class="file">inst/WordStyles/RStyles.dotm</code>.
+One is to simply open that file and then write our document.
+The second is to define that template file as the global/default
+template document.
+</p><p>
+The first approach involves simply opening the RStyles.dotm file
+in Word. On a Mac, this is 
+</p><pre xmlns:r="http://www.r-project.org" xmlns:s="http://cm.bell-labs.com/stat/S4" xmlns:c="http://www.C.org" xmlns:python="http://www.python.org" xmlns:perl="http://www.perl.org" xmlns:vb="http://www.visualbasic.com" xmlns:omegahat="http://www.omegahat.org" xmlns:bioc="http://www.bioconductor.org" xmlns:java="http://www.java.com" xmlns:statdocs="http://www.statdocs.org" xmlns:gtk="http://www.gtk.org" xmlns:com="http://www.microsoft.com" xmlns:sh="http://www.shell.org" xmlns="" class="shell">
+open inst/WordStyles/RStyles.dotm
+</pre>
+<p>
+</p><p>
+We can use the template with R styles as the global template by copying it to the location 
+that Word finds the default template. On a Mac, this is 
+<code xmlns:r="http://www.r-project.org" xmlns:s="http://cm.bell-labs.com/stat/S4" xmlns:c="http://www.C.org" xmlns:python="http://www.python.org" xmlns:perl="http://www.perl.org" xmlns:vb="http://www.visualbasic.com" xmlns:omegahat="http://www.omegahat.org" xmlns:bioc="http://www.bioconductor.org" xmlns:java="http://www.java.com" xmlns:statdocs="http://www.statdocs.org" xmlns:gtk="http://www.gtk.org" xmlns:com="http://www.microsoft.com" xmlns:sh="http://www.shell.org" xmlns="" class="file">/Users/duncan/Library/Application Support/Microsoft/Office/User Templates/Normal.dotm</code>.
+Before we copy our new version there, you might make a copy of what is currently
+in that file. This is important if the settings there are different from the default
+settings. So we might do the following:
+</p><pre xmlns:r="http://www.r-project.org" xmlns:s="http://cm.bell-labs.com/stat/S4" xmlns:c="http://www.C.org" xmlns:python="http://www.python.org" xmlns:perl="http://www.perl.org" xmlns:vb="http://www.visualbasic.com" xmlns:omegahat="http://www.omegahat.org" xmlns:bioc="http://www.bioconductor.org" xmlns:java="http://www.java.com" xmlns:statdocs="http://www.statdocs.org" xmlns:gtk="http://www.gtk.org" xmlns:com="http://www.microsoft.com" xmlns:sh="http://www.shell.org" xmlns="" class="shell">
+cp '/Users/duncan/Library/Application Support/Microsoft/Office/User Templates/Normal.dotm' 
+  '/Users/duncan/Library/Application Support/Microsoft/Office/User Templates/OriginalNormal.dotm'
+</pre>
+<p>
+Now we can copy our template into the default location:
+</p><pre xmlns:r="http://www.r-project.org" xmlns:s="http://cm.bell-labs.com/stat/S4" xmlns:c="http://www.C.org" xmlns:python="http://www.python.org" xmlns:perl="http://www.perl.org" xmlns:vb="http://www.visualbasic.com" xmlns:omegahat="http://www.omegahat.org" xmlns:bioc="http://www.bioconductor.org" xmlns:java="http://www.java.com" xmlns:statdocs="http://www.statdocs.org" xmlns:gtk="http://www.gtk.org" xmlns:com="http://www.microsoft.com" xmlns:sh="http://www.shell.org" xmlns="" class="shell">
+cp inst/WordStyles/RStyles.dotm '/Users/duncan/Library/Application Support/Microsoft/Office/User Templates/Normal.dotm'
+</pre>
+<p>
+If you want to reverse this, you can delete the newly created file and 
+Word will create a new default based on the standard settings.
+If the original .dotm file was different from these settings, you should
+copy it back 
+</p><pre xmlns:r="http://www.r-project.org" xmlns:s="http://cm.bell-labs.com/stat/S4" xmlns:c="http://www.C.org" xmlns:python="http://www.python.org" xmlns:perl="http://www.perl.org" xmlns:vb="http://www.visualbasic.com" xmlns:omegahat="http://www.omegahat.org" xmlns:bioc="http://www.bioconductor.org" xmlns:java="http://www.java.com" xmlns:statdocs="http://www.statdocs.org" xmlns:gtk="http://www.gtk.org" xmlns:com="http://www.microsoft.com" xmlns:sh="http://www.shell.org" xmlns="" class="shell">
+cp '/Users/duncan/Library/Application Support/Microsoft/Office/User Templates/OriginalNormal.dotm'
+    '/Users/duncan/Library/Application Support/Microsoft/Office/User Templates/Normal.dotm' 
+</pre>
+<p>
+</p><p>
+On a Mac, The Templates and Add-ins menu item under Tools
+can be used to manage the default template and its contents
+(under Organize).
+</p></div><div class="section" title="The Styles"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="id1169615246807"></a>The Styles</h2></div></div></div><p>
+Firstly, the RStyles.dotm is a work in progress.  I welcome any enhancements
+to it and people should define their own styles for code-related content. 
+They can share them by "publishing" their .dotm file.
+</p><p>
+There are several styles defined in this template.
+They are described in the following table.
+
+</p><div class="table"><a id="id1169615246823"></a><p class="title"><strong>Table 1. </strong></p><div class="table-contents"><table border="1"><colgroup><col></col><col></col><col></col><col></col></colgroup><thead><tr><th align="center">Style name</th><th align="center">inline or paragraph</th><th align="center">Purpose</th><th align="center">Short cut</th></tr></thead><tbody><tr><td align="left">R options</td><td align="left">paragraph</td><td align="left"> </td><td align="left"> </td></tr><tr><td align="left">Routput</td><td align="left">paragraph</td><td align="left">	</td><td align="left"> </td></tr><tr><td align="left">R output (no border)</td><td align="left">paragraph</td><td align="left">	</td><td align="left"> </td></tr><tr><td align="left">R output table</td><td align="left">paragraph</td><td align="left">	</td><td align="left">
+	</td></tr><tr><td align="left">R plot output</td><td align="left">paragraph</td><td align="left">	</td><td align="left">
+	</td></tr><tr><td align="left">Rcode</td><td align="left">paragraph</td><td align="left">a paragraph</td><td align="left"> </td></tr><tr><td align="left">Rexpr</td><td align="left">inline</td><td align="left">an R expression in the middle of text, e.g. <code xmlns="" class="Sexpression">length(x)</code></td><td align="left"> </td></tr><tr><td align="left">Rfunc</td><td align="left">inline</td><td align="left">a reference to an R function by name</td><td align="left"> </td></tr><tr><td align="left">Rplot</td><td align="left">paragraph</td><td align="left">R code that creates a new plot. This is a paragraph style and text should be split across lines using Shift-Return rather than starting a new </td><td align="left">Command+P</td></tr><tr><td align="left">R Session Info</td><td align="left">paragraph</td><td align="left">a style for presenting information describing an R session via <i xmlns="" class="rfunc">sessionInfo()
+</i>.
+     When the document is processed, the session info is added at the bottom of the document using this style.</td><td align="left"> </td></tr></tbody></table></div></div><p><br class="table-break"></br> 
+</p><p>
+Note that we can compute these since the .dotm file is 
+like a regular Word (.docx) file in structure, and the
+styles defined as XML.
+</p><div xmlns="" class="codeToggle"><div class="unhidden" id="id1169615247105"><div><pre class="" title="R code">
+library(RWordXML)
+doc = wordDoc("RStyles.dotm")
+sty = doc[["styles.xml"]]
+</pre></div></div></div>
+<div xmlns="" class="clearFloat"></div>
+<p>
+The names of the styles are 
+</p><div xmlns="" class="codeToggle"><div class="unhidden" id="id1169615247109"><div><pre class="" title="R code">
+xpathSApply(sty, "//w:style/w:name", xmlGetAttr, "val", namespaces = "w")
+</pre></div></div></div>
+<div xmlns="" class="clearFloat"></div>
+<p>
+
+
+
+</p></div><div class="section" title="Using the Styles"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="id1169615247123"></a>Using the Styles</h2></div></div></div><p>
+
+</p></div><div class="section" title="Adding New Styles"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="id1169615247132"></a>Adding New Styles</h2></div></div></div><p>
+It is easy to add new styles or alter existing styles.
+Use the <span class="guimenu">View</span> menu  and
+under the Toolbox section, select Styles.
+This will bring up an additional window
+which manages the styles.
+</p><div><img src="WordStylesWindow.png"></img></div><p>
+You can click the "New Style" button to start
+creating a new style.
+That will bring up a dialog that looks like
+</p><div><img src="WindowNewStyle.png"></img></div><p>.
+You provide a new name, 
+chose whether the style is for a paragraph or character/inline within text.
+You can chose a style as the template and then customize that, or just use the default.
+For a paragraph style, it is often convenient to have the "Style for following paragraph"
+be Normal so that when the author is writing and hits return, she doesn't have to explicitly
+change the style for the new paragraph.
+</p><p>
+If you want this style to be defined outside of this single document,
+you must remember to check the "Add to template" near the bottom of the dialog.
+</p><p>
+You can also set many additional characteristics of this style via the menu item
+that reads "Format". That has options for Font, Tabs, Border, etc.
+It also allows you to specify a shortcut key sequence for applying this style.
+This can be very convenient for commonly used styles.
+</p><p>
+
+</p></div></div></body></html>

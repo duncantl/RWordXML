@@ -1,0 +1,73 @@
+import(XML)
+import(Rcompression)
+import(ROOXML)
+
+# WordXMLNamespaces
+
+export(
+addStyle,#??? Does this do anything currently?
+asWordTable,
+paragraph,
+getStyleId,
+getStyles,
+hyperlinks,
+toWordprocessingML,       
+wordDoc,
+toc       
+)
+
+#createPhrase,  #XXX rationalize this with paragraph
+#createImageNode,
+
+exportMethods(toc)
+
+export(getFunctionRefs)
+export(getPackageRefs)
+export(getOptionRefs)
+export(getClassRefs)
+
+#exportMethods(getFunctionRefs)
+#exportMethods(getPackageRefs)
+
+export(
+getFigureInfo,
+isParagraphNode      
+       )
+
+
+exportMethods(hyperlinks)
+
+exportMethods(addToDoc)
+
+exportMethods(toWordprocessingML)
+
+#S3method(getPart,WordArchive)
+exportClass(WordArchive)
+
+exportMethods(getDocument)
+
+export(getListNodes, getTableNodes, readTable, readList, tables, lists)
+exportMethods(getListNodes, getTableNodes, tables, lists)
+export(getImages)
+exportMethods(getImages)
+
+exportMethods(coerce)
+
+
+export(wordDynDoc)
+exportMethods(source)
+
+exportClass("RWordXMLDoc")
+exportMethods("[[")
+
+
+export(addList)
+
+
+if(FALSE)
+export(
+     lookupStyle, #
+     addStyleToNode, #
+     findOutputNode
+)
+

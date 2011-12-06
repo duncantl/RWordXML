@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<article xmlns:r="http://www.r-project.org"
+         xmlns:xi="http://www.w3.org/2003/XInclude">
+
+<articleinfo>
+
+<title></title>
+
+<author><firstname>Duncan</firstname><surname>Temple Lang</surname>
+  <affiliation><orgname>University of California at Davis</orgname>
+               <orgdiv>Department of Statistics</orgdiv>
+  </affiliation>
+</author>
+</articleinfo>
+
+<section>
+<title></title>
+
+<para>
+We can take code segments of R code
+and insert them into a Word document.
+These segments of code can come from various
+different formats.
+They might come from an R history file.
+Alternatively, the might come from 
+ a saved transcript of an R session in an emacs shell
+(e.g. the way I run R), or a saved ESS console session.
+The file ~/Classes/Tools/extractRCode.R contains
+R code to be able to extract code from these saved sessions.
+The <omg:pkg>CodeDepends</omg:pkg> package also allows the code segments
+to come from an simple or annotated script (using {} to group expressions)
+</para>
+<para>
+Given the collection of code segments, we can 
+readily insert these as nodes into the Word document
+using the Rcode style.
+We can heuristically determine if the code segments
+create plots and put those in Rplot styles.
+</para>
+<para>
+So the work flow to create a stub of the Word document
+works as follows.
+Interactively run commands in R.
+Take the commands from the session and group them.
+Then insert them into a template document using
+R functions that take the groups and create "paragraphs"
+for each.
+</para>
+<para>
+In the future, we hope to be able to do the grouping automatically
+in a heuristic manner. The <omg:pkg>CodeDepends</omg:pkg>
+package will help here to relate inputs and outputs of expressions
+to find related commands.
+</para>
+
+</section>
+</article>

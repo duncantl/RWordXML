@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<rh:help xmlns:rh="http://www.r-project.org/help" xmlns:r="http://www.r-project.org" xmlns:s3="http://www.r-project.org/S3" xmlns:s4="http://www.r-project.org/S4" xmlns:xi="http://www.w3.org/2003/XInclude" created="2010-01-30 11:45:46">
+  <r:package>RWordXML</r:package>
+  <rh:topic>getPackageRefs</rh:topic>
+  <rh:topic>getOptionRefs</rh:topic>
+  <rh:topic>getFunctionRefs</rh:topic>
+  <rh:topic>getClassRefs</rh:topic>
+  <rh:title>Extract references to R functions, classes, packages etc. from a Word document</rh:title>
+  <rh:description>
+    <para> These functions allow the caller to find marked-up content in a Word document that refers
+     R-related concepts such as functions, classes, packages and options.
+     We can use these to ensure they are spelled correctly, identify actual R objects,
+     see if they need to be renamed to match changes in code, or to programmatically
+     generate, for example, bibliographies.
+</para>
+    <para>These functions allow one to either get the content, i.e. the text, in the document,
+      or alternatively the XML nodes containing the content. We can use the latter approach to 
+      then programmatically update the underlying XML document and hence the .docx file.
+     </para>
+  </rh:description>
+  <rh:arguments>
+   <rh:arg id="doc" func="getClassRefs"><para>the <r:class>WordArchive</r:class> object representing the .docx file, or
+       the parsed XML document corresponding to the main document in the Word archive.</para></rh:arg>
+   <rh:arg id="asNodes" func="getClassRefs"><para>a logical value </para></rh:arg>
+   <rh:arg id="..." func="getClassRefs"><para>additional parameters passed on to  </para></rh:arg>
+   
+   <rh:arg id="ar"><para>the <r:class>WordArchive</r:class> object representing the .docx file.</para></rh:arg></rh:arguments>
+  <rh:value>
+    <para>If <r:arg>asNodes</r:arg> is <r:true/>, then a list of <r:s3class>XMLInternalElementNode</r:s3class> objects is returned.
+     Otherwise, the functions return a character vector giving the content, but 
+ <r:func>getFunctionRefs</r:func> returns a frequency table, with the table names being the function names.
+     </para>
+  </rh:value>
+  <rh:seealso>
+    <r:func>wordDoc</r:func>
+   </rh:seealso>
+  <xi:include href="/Users/duncan/authorInfo.xml"/>
+  <rh:references>
+   </rh:references>
+  <rh:examples>
+    <r:init/>
+    <rh:example id="">
+      <rh:title> </rh:title>
+      <rh:description>
+        <para>This illustrates these functions on a document that discusses this 
+<r:pkg>RWordXML</r:pkg> package.
+        </para>
+      </rh:description>
+      <r:code>
+f = system.file("SampleDocs", "RWordDocTools.docx", package = "RWordXML")
+doc = wordDoc(f)
+getPackageRefs(doc)
+getClassRefs(doc)
+getFunctionRefs(doc)
+getOptionRefs(doc)
+        </r:code>
+    </rh:example>
+  </rh:examples>
+  <rh:keywords>
+    <rh:keyword>programming</rh:keyword>
+  </rh:keywords>
+</rh:help>

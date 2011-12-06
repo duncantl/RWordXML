@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<rh:help xmlns:rh="http://www.r-project.org/help" xmlns:r="http://www.r-project.org" xmlns:s3="http://www.r-project.org/S3" xmlns:s4="http://www.r-project.org/S4" xmlns:xi="http://www.w3.org/2003/XInclude" created="2009-05-20 18:19:22">
+  <r:package>RWordXML</r:package>
+  <rh:topic>toc</rh:topic>
+  <rh:title>Compute table of contents from Word docx file</rh:title>
+  <rh:description>
+    <para>This function returns information about the table of contents or organization
+of the sections in the specified Word document.
+     </para>
+  </rh:description>
+  <rh:arguments>
+   <rh:arg id="file" func="toc"><para>the docx file, either a string or an object of class <r:class>WordArchive</r:class></para></rh:arg>
+   <rh:arg id="..." func="toc"><para>additional parameters for the methods.</para></rh:arg>
+   </rh:arguments>
+  <rh:value>
+    <para>A character vector giving the "titles" of each section found. The level
+  of each section is provided via the attribute named <r:attr>levels</r:attr>.
+ The class of this object is an S3 class named <r:s3class>DocumentTableOfContents</r:s3class>.
+     </para>
+  </rh:value>
+  <rh:seealso>
+   </rh:seealso>
+  <xi:include href="/Users/duncan/authorInfo.xml"/>
+  <rh:references>
+   </rh:references>
+  <rh:examples>
+    <r:init/>
+    <rh:example id="">
+      <rh:title>Sample Table of Contents</rh:title>
+      <rh:description>
+        <para>This illustrates extracting the table of contents from a sample
+document that has several Heading 1, 2 and 3 styles.
+        </para>
+      </rh:description>
+      <r:code>
+f = system.file("SampleDocs", "toc.docx", package = "RWordXML")
+doc = wordDoc(f)
+tt = toc(doc)
+tt
+        </r:code>
+    </rh:example>
+  </rh:examples>
+  <rh:keywords>
+    <rh:keyword>documentation</rh:keyword>
+  </rh:keywords>
+  <rh:versionIntroduced version=""/>
+</rh:help>

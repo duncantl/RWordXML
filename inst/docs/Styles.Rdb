@@ -1,0 +1,275 @@
+<?xml version="1.0"?>
+<article xmlns:r="http://www.r-project.org" xmlns:xi="http://www.w3.org/2003/XInclude" xmlns:sh="http://www.shell.org"
+	 xmlns:omg="http://www.omegahat.org">
+  <articleinfo>
+    <title/>
+    <author>
+      <firstname>Duncan</firstname>
+      <surname>Temple Lang</surname>
+      <affiliation>
+        <orgname>University of California at Davis</orgname>
+        <orgdiv>Department of Statistics</orgdiv>
+      </affiliation>
+    </author>
+  </articleinfo>
+
+<section>
+<title>Using RWordXML for Authoring Dynamic Documents with R Code</title>
+
+<para>
+We have defined several styles that you use to markup 
+R and shell code as you are authoring a document in Word.
+To access these styles, you can either open our template
+(RStyles.dotm) that is installed with the package,
+or you can chose to use that template as the default for
+all Word documents (or merge its styles into the default template).
+Either works fine.
+</para>
+<para>
+The simple idea is that you write your document,
+cut-and-paste or write R code and mark it up
+with the appropriate styles that identify the role of the code,
+e.g. an R plot, regular R code, shell code.
+</para>
+<para>
+When you want to run the code and insert
+the results, you use the
+<omg:pkg>RWordXML</omg:pkg> package
+and specifically the 
+<r:func>wordDynDoc</r:func> to 
+process the document, run the code and insert the relevant
+output into a <emphasis>new</emphasis> Word document
+(i.e. we don't overwrite the original one!).
+</para>
+
+
+<para>
+An example of a very simple document that contains two R code segments
+and an additional one that generates a plot is given in
+<file>inst/SampleDocs/SampleRWord.docx</file>.  This illustrates how
+we can suppress displaying the output of an R node (with the Rcode (no
+output) style) and also show the output, and insert a plot.
+</para>
+
+
+</section>
+
+<section>
+   <title>Installing the Templates with Styles</title>
+    <para>
+We'll illustrate this for a Mac.
+</para>
+    <para>
+There are two ways we can use the R styles as defined in 
+<file>inst/WordStyles/RStyles.dotm</file>.
+One is to simply open that file and then write our document.
+The second is to define that template file as the global/default
+template document.
+</para>
+    <para>
+The first approach involves simply opening the RStyles.dotm file
+in Word. On a Mac, this is 
+<sh:code>
+open inst/WordStyles/RStyles.dotm
+</sh:code>
+</para>
+    <para>
+We can use the template with R styles as the global template by copying it to the location 
+that Word finds the default template. On a Mac, this is 
+<file>/Users/duncan/Library/Application Support/Microsoft/Office/User Templates/Normal.dotm</file>.
+Before we copy our new version there, you might make a copy of what is currently
+in that file. This is important if the settings there are different from the default
+settings. So we might do the following:
+<sh:code>
+cp '/Users/duncan/Library/Application Support/Microsoft/Office/User Templates/Normal.dotm' 
+  '/Users/duncan/Library/Application Support/Microsoft/Office/User Templates/OriginalNormal.dotm'
+</sh:code>
+Now we can copy our template into the default location:
+<sh:code>
+cp inst/WordStyles/RStyles.dotm '/Users/duncan/Library/Application Support/Microsoft/Office/User Templates/Normal.dotm'
+</sh:code>
+If you want to reverse this, you can delete the newly created file and 
+Word will create a new default based on the standard settings.
+If the original .dotm file was different from these settings, you should
+copy it back 
+<sh:code>
+cp '/Users/duncan/Library/Application Support/Microsoft/Office/User Templates/OriginalNormal.dotm'
+    '/Users/duncan/Library/Application Support/Microsoft/Office/User Templates/Normal.dotm' 
+</sh:code>
+</para>
+    <para>
+On a Mac, The Templates and Add-ins menu item under Tools
+can be used to manage the default template and its contents
+(under Organize).
+</para>
+
+
+<para>
+On a Windows XP machine,  the Normal.dotm file is located 
+in
+<file>C:/Document and Settings/Application Data/Microsoft/Templates/Normal.dotm</file>.
+
+</para>
+
+
+  </section>
+
+
+
+  <section>
+    <title>The Styles</title>
+    <para>
+Firstly, the RStyles.dotm is a work in progress.  I welcome any enhancements
+to it and people should define their own styles for code-related content. 
+They can share them by "publishing" their .dotm file.
+</para>
+    <para>
+There are several styles defined in this template.
+They are described in the following table.
+
+<table bgcolor="gray">
+  <?dbfo keep-together="auto"?>
+  <tgroup cols="4">
+    <thead>
+      <row>
+        <entry align="center">Style name</entry>
+        <entry align="center">inline or paragraph</entry>
+        <entry align="center">Purpose</entry>
+        <entry align="center">Short cut</entry>
+      </row>
+    </thead>
+    <tbody>
+      <row>
+        <entry align="left">R options</entry>
+        <entry align="left">paragraph</entry>
+        <entry align="left"/>
+        <entry align="left"/>
+      </row>
+      <row>
+        <entry align="left">Routput</entry>
+        <entry align="left">paragraph</entry>
+        <entry align="left">	</entry>
+        <entry align="left"/>
+      </row>
+      <row>
+        <entry align="left">R output (no border)</entry>
+        <entry align="left">paragraph</entry>
+        <entry align="left">	</entry>
+        <entry align="left"/>
+      </row>
+      <row>
+        <entry align="left">R output table</entry>
+        <entry align="left">paragraph</entry>
+        <entry align="left">	</entry>
+        <entry align="left">
+	</entry>
+      </row>
+      <row>
+        <entry align="left">R plot output</entry>
+        <entry align="left">paragraph</entry>
+        <entry align="left">	</entry>
+        <entry align="left">
+	</entry>
+      </row>
+      <row>
+        <entry align="left">Rcode</entry>
+        <entry align="left">paragraph</entry>
+        <entry align="left">a paragraph</entry>
+        <entry align="left"/>
+      </row>
+      <row>
+        <entry align="left">Rexpr</entry>
+        <entry align="left">inline</entry>
+        <entry align="left">an R expression in the middle of text, e.g. <r:expr>length(x)</r:expr></entry>
+        <entry align="left"/>
+      </row>
+      <row>
+        <entry align="left">Rfunc</entry>
+        <entry align="left">inline</entry>
+        <entry align="left">a reference to an R function by name</entry>
+        <entry align="left"/>
+      </row>
+      <row>
+        <entry align="left">Rplot</entry>
+        <entry align="left">paragraph</entry>
+        <entry align="left">R code that creates a new plot. This is a paragraph style and text should be split across lines using Shift-Return rather than starting a new </entry>
+        <entry align="left">Command+P</entry>
+      </row>
+      <row>
+        <entry align="left">R Session Info</entry>
+        <entry align="left">paragraph</entry>
+        <entry align="left">a style for presenting information describing an R session via <r:func>sessionInfo</r:func>.
+     When the document is processed, the session info is added at the bottom of the document using this style.</entry>
+        <entry align="left"/>
+      </row>
+    </tbody>
+  </tgroup>
+</table> 
+</para>
+    <para>
+Note that we can compute these since the .dotm file is 
+like a regular Word (.docx) file in structure, and the
+styles defined as XML.
+<r:code>
+library(RWordXML)
+doc = wordDoc("RStyles.dotm")
+sty = doc[["styles.xml"]]
+</r:code>
+The names of the styles are 
+<r:code>
+xpathSApply(sty, "//w:style/w:name", xmlGetAttr, "val", namespaces = "w")
+</r:code>
+
+<ignore>
+Generated by
+<r:code>
+rstyles = grep("R", xpathSApply(sty, "//w:style/w:name", xmlGetAttr, "val", namespaces = "w"), value = TRUE)
+matrix2DocBook(cbind(rstyles, "", ""))
+</r:code>
+</ignore>
+
+</para>
+  </section>
+  <section>
+    <title>Using the Styles</title>
+    <para>
+
+</para>
+  </section>
+
+<section>
+<title>Adding New Styles</title>
+
+<para>
+It is easy to add new styles or alter existing styles.
+Use the <guimenu>View</guimenu> menu  and
+under the Toolbox section, select Styles.
+This will bring up an additional window
+which manages the styles.
+<img src="WordStylesWindow.png"/>
+You can click the "New Style" button to start
+creating a new style.
+That will bring up a dialog that looks like
+<img src="WindowNewStyle.png"/>.
+You provide a new name, 
+chose whether the style is for a paragraph or character/inline within text.
+You can chose a style as the template and then customize that, or just use the default.
+For a paragraph style, it is often convenient to have the "Style for following paragraph"
+be Normal so that when the author is writing and hits return, she doesn't have to explicitly
+change the style for the new paragraph.
+</para>
+<para>
+If you want this style to be defined outside of this single document,
+you must remember to check the "Add to template" near the bottom of the dialog.
+</para>
+<para>
+You can also set many additional characteristics of this style via the menu item
+that reads "Format". That has options for Font, Tabs, Border, etc.
+It also allows you to specify a shortcut key sequence for applying this style.
+This can be very convenient for commonly used styles.
+</para>
+<para>
+
+</para>
+</section>
+</article>
