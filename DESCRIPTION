@@ -12,6 +12,6 @@ Imports: XML, Rcompression, methods, ROOXML
 Depends: ROOXML
 Suggests: rimage
 Author: Duncan Temple Lang, Gabe Becker.
-Maintainer: Duncan Temple Lang <duncan@wald.ucdavis.edu>
+Maintainer: Duncan Temple Lang <duncan@r-project.org>
 License: BSD
 
